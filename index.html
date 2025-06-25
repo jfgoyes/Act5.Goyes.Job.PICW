@@ -4,17 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Act5.Goyes.Job.PICW</title>
-    <link href="./public/lib/bootstrap-5.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./public/lib/bootstrap-5.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/estilos.css">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Calculadora Custom Elements y Shadow DOM</h2>
+    <div class="container segoe-ui">
+        <!-- Contenedor de la carátula -->
+        <div class="text-center p-4 fs-4 times-new-roman">
+            <p>
+                <a href="https://www.espe.edu.ec/" target="_blank">
+                    <img src="https://www.espe.edu.ec/wp-content/uploads/2023/03/espe.png" alt="espelogocaratula" width="350" height="100">
+                </a>
+                <br><br>
+                MODALIDAD EN LÍNEA
+                <br>
+                INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN
+                <br>
+                PROGRAMACIÓN INTEGRATIVA DE COMPONENTES WEB
+                <br>
+                Actividad 5 - SEGUNDO PARCIAL
+                <br>
+                <br>
+                <strong>Estudiante:</strong> Job Francesco Goyes Arcalle
+                <br>
+                <strong>TUTOR:</strong> Ing. Criollo Chanchicocha, Vilmer David
+                <br>
+                <strong>NRC:</strong> 23407
+                <br>
+                <strong>FECHA:</strong> 26/06/2025
+            </p>
+        </div>
+        <!-- Contenedor de la calculadora -->
+        <!-- Titulo de la calculadora -->
+        <h3 class="text-center mb-4 times-new-roman"><strong> Calculadora Custom Elements y Shadow DOM</strong></h2>
+        <!-- Calculadora para realizar las operaciones -->    
         <div class="d-flex justify-content-center">
-            <calculadora-basica></calculadora-basica>
+            <calculadora-shadow-dom></calculadora-shadow-dom>
+        </div>
+        <!-- Pie de pagina -->
+        <div class="text-center p-4 times-new-roman">
+            <footer class="py-3 mt-5 fs-6">
+                <p>
+                    © Universidad de las Fuerzas Armadas ESPE | Todos los derechos reservados 2025
+                </p>
+            </footer>
         </div>
     </div>
+
     <script src="./public/js/calculadora-shadow.js"></script>
-    <script></script>
 </body>
+</html>
 </html>
