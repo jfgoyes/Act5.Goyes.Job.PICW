@@ -33,6 +33,10 @@ class CalculadoraShadowDom extends HTMLElement {
         </div>
         `;
     }
+	
+	connectedCallback() {
+        this.shadow.querySelector('#realizarCalculo').addEventListener('click', () => this.funcionRealizarCalculo());
+    }
 }
 
 customElements.define('calculadora-shadow-dom', CalculadoraShadowDom);
