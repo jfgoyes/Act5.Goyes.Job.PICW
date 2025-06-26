@@ -72,6 +72,51 @@ class CalculadoraShadowDom extends HTMLElement {
             // No mostramos ningun resultado.
             return;
         }
+		// Definimos las variables para mostrar el resultado obtenido y la operación realizada.
+        let resultadoCalculadora;
+        let valorOperacion;
+        // Implementamos una estructura de casos para cada operación, suma, resta, multiplicación y división.
+        switch (operacionCalculadora) {
+            // Si el usuario selecciona la operación suma, establecemos lo que se va a realizar.
+            case 'suma':
+                // Hacemos el calculo de la suma como tal.
+                resultadoCalculadora = valor_numerico_1 + valor_numerico_2;
+                // Mostramos el valor de la operación realizada.
+                valorOperacion = `${valor_numerico_1} + ${valor_numerico_2} = ${resultadoCalculadora}`;
+                // Terminamos el proceso realizado.
+                break;
+            // Definimos la operación resta.
+            case 'resta':
+                // Realizamos el calculo de la operación resta.
+                resultadoCalculadora = valor_numerico_1 - valor_numerico_2;
+                // Mostramos el valor de la operación realizada.
+                valorOperacion = `${valor_numerico_1} - ${valor_numerico_2} = ${resultadoCalculadora}`;
+                // Terminamos el proceso realizado en la operación.
+                break;
+            // Similar a los anteriores casos, definimos la operación multiplicación.
+            case 'multiplicacion':
+                resultadoCalculadora = valor_numerico_1 * valor_numerico_2;
+                valorOperacion = `${valor_numerico_1} * ${valor_numerico_2} = ${resultadoCalculadora}`;
+                // Terminamos el proceso realizado en la operación.
+                break;
+            // Definimos la operación división.
+            case 'division':
+                // Establecemos una condición para que no se pueda dividir sobre cero.
+                if (valor_numerico_2 === 0) {
+                    // Mostramos el mensaje de error si se cumple esa condición.
+                    resultadoCalculadoraElement.textContent = 'No es posible una división sobre cero.';
+                    // Hacemos uso de bootstrap para darle un estilo al mensaje.
+                    resultadoCalculadoraElement.className = 'mt-3 alert alert-danger';
+                    // No mostramos ningun resultado.
+                    return;
+                }
+                // En caso de que no sea una división sobre cero, procedemos a calcular la operación.
+                resultadoCalculadora = valor_numerico_1 / valor_numerico_2;
+                // Mostramos el valor de la operación división.
+                valorOperacion = `${valor_numerico_1} / ${valor_numerico_2} = ${resultadoCalculadora}`;
+                // Terminamos el proceso realizado.
+                break;
+        }
     }
 }
 
