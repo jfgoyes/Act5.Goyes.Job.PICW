@@ -53,6 +53,19 @@
     </div>
 
     <script src="./public/js/calculadora-shadow.js"></script>
+	<!-- Identificación del evento personalizado que fue implementado en el DOM -->
+    <script>
+        /* Hacemos la selección del componente personalizado calculadora-shadow-dom y establecemos 
+        un evento de escucha para el resultado obtenido. */
+        document.querySelector('calculadora-shadow-dom').addEventListener('resultadoCalculadoraObtenido', function(event) {
+            // Mostramos el mensaje por consola para el evento recibido.
+            console.log("Evento obtenido desde el documento padre: ");
+            // Mostramos el resultado obtenido proveniente desde el componente DOM.
+            console.log("Resultado obtenido:", event.detail.resultadoCalculadora);
+            // Mostramos toda la operación realizada.
+            console.log("Operacion establecida:", event.detail.expresionObtenida);
+        });
+    </script>
 </body>
 </html>
 </html>
