@@ -51,6 +51,27 @@ class CalculadoraShadowDom extends HTMLElement {
         const operacionCalculadora = this.shadow.querySelector('#operacionCalculadora').value;
         const resultadoCalculadoraElement = this.shadow.querySelector('#resultadoCalculadora');
         const historialCalculadoraElement = this.shadow.querySelector('#historialCalculadora');
+		// Establecemos condiciones para el caso donde el usuario no ingrese ningun valor en los recuadros.
+        if (numero_1 === '' || numero_2 === '') {
+            // Implementamos el mensaje a mostrar.
+            resultadoCalculadoraElement.textContent = 'Es obligatorio ingresar los dos números.'
+            // Establecemos el estilo del mensaje mediante bootstrap.
+            resultadoCalculadoraElement.className = 'mt-3 alert alert-danger';
+            // No mostramos ningun resultado.
+            return;
+        }
+        // Seguidamente, transformamos los números ingresados a valores que son reales.
+        const valor_numerico_1 = parseFloat(numero_1);
+        const valor_numerico_2 = parseFloat(numero_2);
+        // Hacemos una validación para corroborar que los valores ingresados sean números validos y no textos.
+        if (isNaN(valor_numerico_1) || isNaN(valor_numerico_2)) {
+            // Implementamos el mensaje de error en el caso de que los valores no sean números.
+            resultadoCalculadoraElement.textContent = 'Los valores ingresados deben ser números.'
+            // Utilizamos bootstrap para darle un estilo al mensaje mostrado.
+            resultadoCalculadoraElement.className = 'mt-3 alert alert-danger';
+            // No mostramos ningun resultado.
+            return;
+        }
     }
 }
 
