@@ -117,6 +117,36 @@ class CalculadoraShadowDom extends HTMLElement {
                 // Terminamos el proceso realizado.
                 break;
         }
+		
+		// Procedemos a mostrar el respectivo resultado de cada operación según sea el caso.
+        resultadoCalculadoraElement.textContent = `Resultado obtenido: ${resultadoCalculadora}`;
+        // Definimos un estilo para el resultado obtenido.
+        resultadoCalculadoraElement.className = 'mt-3 alert alert-success';
+
+        // Definimos un evento totalmente personalizado el cual tiene información respecto a la operación que fue realizada.
+        this.dispatchEvent(new CustomEvent('resultadoCalculadoraObtenido', {
+            detail: {
+                operacionCalculadora: operacionCalculadora, // Especificamos el tipo de operación que fue realizada.
+                resultadoCalculadora: resultadoCalculadora, // Especificamos el resultado obtenido en base a la operación.
+                expresionObtenida: valorOperacion, // Establecemos la operación realizada.
+                fechaOperacion: new Date().toISOString() // Establecemos la fecha que se realizó el cálculo en forma ISO.
+            },
+            /* Definimos la sentencia bubbles ya que nos permite hacer que el evento personalizado suba por el DOM,
+            esto es util ya que de ese modo cualquier elemento superior (padre) puede capturar este evento. */
+            bubbles: true,
+            /* Establecemos composed ya que nos sirve para que el evento personalizado pueda ser visible desde otras 
+            secciones del componente. */
+            composed: true
+        }));
+        // Definimos  la estructura para el historial de las operaciones realizadas en la calculadora.
+        // Creamos un elemento del tipo lista li para agregarlo en el historial de la calculadora.
+        const item = document.createElement('li');
+        // Establecemos el texto del elemento creado de tipo lista, con el valor de la operación.
+        item.textContent = valorOperacion;
+        // Damos un estilo al elemento mediante bootstrap.
+        item.className = 'list-group-item';
+        // Hacemos que el elemento lista con la operación se inserte de arriba hacia abajo.
+        historialCalculadoraElement.prepend(item);
     }
 }
 
