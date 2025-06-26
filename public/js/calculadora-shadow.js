@@ -1,18 +1,21 @@
+// Definimos la clase CalculadoraShadowDom, haciendo uso de custom element.
 class CalculadoraShadowDom extends HTMLElement {
+    // Establecemos un constructor con la estructura de la calculadora.
     constructor() {
         super();
+        // Establecemos un Shadow DOM abierto que se va a encargar de encapsular los estilos y la estructura como tal.
         this.shadow = this.attachShadow({ mode: 'open'});
-
+        // Definimos toda la interfaz de la calculadora, utilizando Bootstrap.
         this.shadow.innerHTML = `
         <link href="./public/lib/bootstrap-5.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
         <div class=" card p-4" style="width: 400px;">
         <div class="mb-3">
             <label class="from-label">Primer número</label>
-            <input type="number" id="numero1" class="from-control" placeholder="Escriba aquí">
+            <input type="number" id="numero1" class="form-control" placeholder="Escriba aquí">
         </div>
         <div class="mb-3">
             <label class="from-label">Segundo número</label>
-            <input type="number" id="numero2" class="from-control" placeholder="Escriba aquí">
+            <input type="number" id="numero2" class="form-control" placeholder="Escriba aquí">
         </div>
         <div class="mb-3">
             <label class="from-label">Operación a realizar</label>
@@ -33,10 +36,23 @@ class CalculadoraShadowDom extends HTMLElement {
         </div>
         `;
     }
-	
-	connectedCallback() {
+    /* Definimos un evento para realizar el calculo, es decir, si el usuario da click en el botón Calcular resultado,
+    entonces que se ejecute la función realizarCalculo */
+    connectedCallback() {
         this.shadow.querySelector('#realizarCalculo').addEventListener('click', () => this.funcionRealizarCalculo());
+    }
+	
+	// Definimos la función donde se llevará a cabo cualquier operación o expresión que sea válida o no válida.
+    funcionRealizarCalculo() {
+        // Establecemos los valores que se van a ingresar, el número 1 y número 2.
+        const numero_1 = this.shadow.querySelector('#numero1').value.trim();
+        const numero_2 = this.shadow.querySelector('#numero2').value.trim();
+        // Definimos variables para las operaciones a realizar, el resultado y el historial de la calculadora.
+        const operacionCalculadora = this.shadow.querySelector('#operacionCalculadora').value;
+        const resultadoCalculadoraElement = this.shadow.querySelector('#resultadoCalculadora');
+        const historialCalculadoraElement = this.shadow.querySelector('#historialCalculadora');
     }
 }
 
+// Definimos el registro para el evento personalizado, de este modo podemos usarlo como una etiqueta HTML.
 customElements.define('calculadora-shadow-dom', CalculadoraShadowDom);
